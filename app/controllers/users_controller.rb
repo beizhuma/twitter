@@ -8,8 +8,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)    # Not the final implementation!
     if @user.save
-      redirect_to @user
+      sign_in @user
       flash[:success] = "Welcome to the TWITTER!"
+      redirect_to @user
       # Handle a successful save.
     else
       render 'new'
